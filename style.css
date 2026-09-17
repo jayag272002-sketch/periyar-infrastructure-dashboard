@@ -1,1 +1,249 @@
 
+/* ============ PAI GOVERNMENT DASHBOARD STYLE ============ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    background:#EEF3FA;
+    color:#222;
+}
+
+/* ---------- HEADER ---------- */
+
+.top-banner{
+    background:#005B9A;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 35px;
+}
+
+.logo-box img{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+    background:white;
+    border-radius:50%;
+    padding:6px;
+}
+
+.title{
+    text-align:center;
+    flex:1;
+}
+
+.title h1{
+    font-size:30px;
+    letter-spacing:1px;
+}
+
+.title h2{
+    color:#FFD54F;
+    margin-top:6px;
+}
+
+.title p{
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+nav{
+    background:#007BC7;
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    padding:14px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#FFE082;
+}
+
+/* ---------- TITLE STRIP ---------- */
+
+.dashboard-title{
+    background:#FFF4CC;
+    color:#003366;
+    text-align:center;
+    padding:18px;
+    font-size:22px;
+    font-weight:700;
+}
+
+/* ---------- FILTER PANEL ---------- */
+
+.filter-panel{
+    width:95%;
+    margin:25px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr) 140px;
+    gap:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.filter-panel select,
+.filter-panel button{
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+.filter-panel button{
+    background:#005B9A;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.filter-panel button:hover{
+    background:#004578;
+}
+
+/* ---------- KPI CARDS ---------- */
+
+.cards{
+    width:95%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    padding:22px;
+    color:white;
+    border-radius:10px;
+}
+
+.card h3{
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.card h1{
+    font-size:34px;
+}
+
+.blue{background:#005B9A;}
+.green{background:#009688;}
+.orange{background:#F57C00;}
+.pink{background:#C2185B;}
+
+/* ---------- THEMATIC TABLE ---------- */
+
+.theme-table{
+    width:95%;
+    margin:30px auto;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.theme-header{
+    background:#C2185B;
+    color:white;
+    text-align:center;
+    padding:14px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+.t1{background:#B71C1C;color:white;}
+.t2{background:#009688;color:white;}
+.t3{background:#FBC02D;}
+.t4{background:#29B6F6;color:white;}
+.t5{background:#689F38;color:white;}
+.t6{background:#EF6C00;color:white;}
+.t7{background:#1565C0;color:white;}
+.t8{background:#7E57C2;color:white;}
+.t9{background:#D81B60;color:white;}
+
+/* ---------- GIS PANEL ---------- */
+
+.map-section{
+    width:95%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.map-box,
+.chart-box{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.placeholder{
+    margin-top:15px;
+    height:320px;
+    border:2px dashed #8AA8C3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#52708D;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    background:#003A63;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:900px){
+
+.top-banner{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+}
+
+.cards,
+.filter-panel,
+.map-section{
+    grid-template-columns:1fr;
+}
+
+nav{
+    flex-wrap:wrap;
+}
+
+}
