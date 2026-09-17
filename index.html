@@ -1,462 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Periyar Infrastructure Planning Dashboard</title>
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Segoe UI,Arial,sans-serif;
-        }
-
-        body{
-            background:#eef3f9;
-        }
-
-        /* ---------------- HEADER ---------------- */
-
-        .top-banner{
-            background:#005b96;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            padding:18px 40px;
-        }
-
-        .logo-box{
-            display:flex;
-            align-items:center;
-            gap:15px;
-        }
-
-        .logo-circle{
-            width:70px;
-            height:70px;
-            border-radius:50%;
-            background:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#005b96;
-            font-size:28px;
-            font-weight:bold;
-        }
-
-        .title{
-            text-align:center;
-            flex:1;
-        }
-
-        .title h1{
-            font-size:30px;
-            letter-spacing:1px;
-        }
-
-        .title h2{
-            font-size:18px;
-            color:#ffd54f;
-            margin-top:8px;
-        }
-
-        .title p{
-            margin-top:5px;
-            font-size:13px;
-        }
-
-        /* ---------------- NAVIGATION ---------------- */
-
-        nav{
-            background:#0078c2;
-            display:flex;
-            justify-content:center;
-            gap:35px;
-            padding:14px;
-        }
-
-        nav a{
-            color:white;
-            text-decoration:none;
-            font-weight:600;
-            font-size:14px;
-        }
-
-        nav a:hover{
-            color:#ffe082;
-        }
-
-        /* ---------------- PAGE TITLE ---------------- */
-
-        .dashboard-title{
-            background:#fff8dc;
-            color:#003366;
-            text-align:center;
-            padding:18px;
-            font-weight:bold;
-            font-size:22px;
-        }
-
-        /* ---------------- FILTER BAR ---------------- */
-
-        .filter-panel{
-            background:white;
-            margin:25px auto;
-            width:94%;
-            border-radius:10px;
-            padding:20px;
-            display:grid;
-            grid-template-columns:repeat(4,1fr) 140px;
-            gap:15px;
-            box-shadow:0 3px 10px rgba(0,0,0,.08);
-        }
-
-        select{
-            padding:12px;
-            border:1px solid #bbb;
-            border-radius:5px;
-            font-size:14px;
-        }
-
-        button{
-            background:#005b96;
-            color:white;
-            border:none;
-            border-radius:5px;
-            font-size:15px;
-            cursor:pointer;
-        }
-
-        button:hover{
-            background:#003f69;
-        }
-
-        /* ---------------- KPI CARDS ---------------- */
-
-        .cards{
-            width:94%;
-            margin:auto;
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:18px;
-        }
-
-        .card{
-            color:white;
-            padding:22px;
-            border-radius:10px;
-        }
-
-        .card h3{
-            font-size:14px;
-            margin-bottom:12px;
-        }
-
-        .card h1{
-            font-size:34px;
-        }
-
-        .blue{background:#005b96;}
-        .green{background:#0a8f60;}
-        .orange{background:#f57c00;}
-        .pink{background:#c2185b;}
-
-        /* ---------------- THEMATIC TABLE ---------------- */
-
-        .theme-table{
-            width:94%;
-            margin:35px auto;
-            background:white;
-            border-radius:10px;
-            overflow:hidden;
-            box-shadow:0 3px 10px rgba(0,0,0,.08);
-        }
-
-        .theme-header{
-            background:#c2185b;
-            color:white;
-            padding:12px;
-            text-align:center;
-            font-size:18px;
-            font-weight:bold;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-        }
-
-        th,td{
-            padding:15px;
-            border:1px solid #ddd;
-            text-align:center;
-        }
-
-        th{
-            color:white;
-            font-size:13px;
-        }
-
-        .t1{background:#b71c1c;}
-        .t2{background:#009688;}
-        .t3{background:#fbc02d;color:black;}
-        .t4{background:#29b6f6;}
-        .t5{background:#689f38;}
-        .t6{background:#ef6c00;}
-        .t7{background:#1565c0;}
-        .t8{background:#7e57c2;}
-        .t9{background:#d81b60;}
-
-        /* ---------------- MAP PLACEHOLDER ---------------- */
-
-        .map-section{
-            width:94%;
-            margin:auto;
-            display:grid;
-            grid-template-columns:2fr 1fr;
-            gap:20px;
-        }
-
-        .map-box,.chart-box{
-            background:white;
-            border-radius:10px;
-            padding:18px;
-            box-shadow:0 3px 10px rgba(0,0,0,.08);
-        }
-
-        .placeholder{
-            height:330px;
-            border:2px dashed #8ea8c3;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#4a6a85;
-            font-size:18px;
-            margin-top:15px;
-        }
-
-        /* ---------------- FOOTER ---------------- */
-
-        footer{
-            background:#003b63;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:40px;
-        }
-
-        @media(max-width:900px){
-
-            .filter-panel,
-            .cards,
-            .map-section{
-                grid-template-columns:1fr;
-            }
-
-            nav{
-                flex-wrap:wrap;
-            }
-
-            .top-banner{
-                flex-direction:column;
-                text-align:center;
-                gap:15px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periyar Infrastructure Planning Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- HEADER -->
 
 <header class="top-banner">
 
     <div class="logo-box">
-        <div class="logo-circle">TCE</div>
+        <img src="assets/logos/tce.png" alt="TCE Logo">
     </div>
 
     <div class="title">
         <h1>INFRASTRUCTURE PLANNING DASHBOARD</h1>
-        <h2>Periyar Bus Stand, Madurai</h2>
-        <p>24UP331 • Thiagarajar School of Environmental Design and Architecture</p>
+        <h2>PERIYAR BUS STAND • MADURAI</h2>
+        <p>24UP331 Infrastructure Planning Studio | Thiagarajar School of Environmental Design and Architecture</p>
     </div>
 
-    <div class="logo-box">
-        <div class="logo-circle">TN</div>
+    <div class="gov-logo">
+        TN
     </div>
 
 </header>
 
-<!-- NAV BAR -->
-
 <nav>
-    <a href="#">Home</a>
-    <a href="#">Mobility</a>
-    <a href="#">Utilities</a>
-    <a href="#">Public Realm</a>
-    <a href="#">GIS Maps</a>
-    <a href="#">Proposal</a>
+    <a href="#overview">Overview</a>
+    <a href="#mobility">Mobility</a>
+    <a href="#utilities">Utilities</a>
+    <a href="#publicrealm">Public Realm</a>
+    <a href="#proposal">Proposal</a>
 </nav>
 
-<!-- DASHBOARD TITLE -->
-
-<div class="dashboard-title">
+<section class="dashboard-title">
     PERIYAR BUS STAND INFRASTRUCTURE PLANNING PORTAL (2026–2044)
+</section>
+
+<section class="filter-panel">
+
+<select>
+<option>Year : 2026</option>
+<option>2030</option>
+<option>2035</option>
+<option>2044</option>
+</select>
+
+<select>
+<option>Study Area : Periyar Core</option>
+<option>North Zone</option>
+<option>South Zone</option>
+<option>East Zone</option>
+<option>West Zone</option>
+</select>
+
+<select>
+<option>Infrastructure Theme</option>
+<option>Mobility</option>
+<option>Utilities</option>
+<option>Public Realm</option>
+<option>Environment</option>
+</select>
+
+<select>
+<option>Road Hierarchy</option>
+<option>Primary</option>
+<option>Secondary</option>
+<option>Collector</option>
+<option>Internal</option>
+</select>
+
+<button>SEARCH</button>
+
+</section>
+
+<section class="cards">
+
+<div class="card blue">
+<h3>Total Road Network</h3>
+<h1>3.8 km</h1>
 </div>
 
-<!-- FILTER BAR -->
+<div class="card green">
+<h3>Daily Bus Users</h3>
+<h1>50,000+</h1>
+</div>
 
-<div class="filter-panel">
+<div class="card orange">
+<h3>Parking Capacity</h3>
+<h1>420</h1>
+</div>
 
-    <select>
-        <option>Year : 2026</option>
-        <option>2030</option>
-        <option>2035</option>
-        <option>2044</option>
-    </select>
+<div class="card pink">
+<h3>Flood Hotspots</h3>
+<h1>07</h1>
+</div>
 
-    <select>
-        <option>Study Area : Periyar Core</option>
-        <option>North Zone</option>
-        <option>South Zone</option>
-        <option>East Zone</option>
-        <option>West Zone</option>
-    </select>
+</section>
 
-    <select>
-        <option>Infrastructure Theme</option>
-        <option>Mobility</option>
-        <option>Utilities</option>
-        <option>Public Realm</option>
-        <option>Environment</option>
-    </select>
+<section class="theme-table">
 
-    <select>
-        <option>Road Category</option>
-        <option>Primary</option>
-        <option>Secondary</option>
-        <option>Collector</option>
-        <option>Internal</option>
-    </select>
+<div class="theme-header">
+INFRASTRUCTURE THEMATIC INDICATORS
+</div>
 
-    <button>SEARCH</button>
+<table>
+<tr>
+<th class="t1">M1</th>
+<th class="t2">M2</th>
+<th class="t3">M3</th>
+<th class="t4">M4</th>
+<th class="t5">M5</th>
+<th class="t6">M6</th>
+<th class="t7">M7</th>
+<th class="t8">M8</th>
+<th class="t9">M9</th>
+</tr>
+
+<tr>
+<td>Mobility</td>
+<td>Pedestrian</td>
+<td>Water</td>
+<td>Drainage</td>
+<td>Waste</td>
+<td>Public Amenities</td>
+<td>Green Infra</td>
+<td>Safety</td>
+<td>Governance</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>12</td>
+<td>8</td>
+<td>10</td>
+<td>6</td>
+<td>14</td>
+<td>9</td>
+<td>11</td>
+<td>13</td>
+</tr>
+
+</table>
+
+</section>
+
+<section class="map-section">
+
+<div class="map-box">
+<h2>GIS Infrastructure Dashboard</h2>
+<div class="placeholder">
+Drop ArcGIS PNG Map Here Later
+</div>
+</div>
+
+<div class="chart-box">
+<h2>Infrastructure Status</h2>
+
+<p>Mobility</p>
+<progress value="82" max="100"></progress>
+
+<p>Drainage</p>
+<progress value="71" max="100"></progress>
+
+<p>Parking</p>
+<progress value="65" max="100"></progress>
+
+<p>Public Realm</p>
+<progress value="75" max="100"></progress>
 
 </div>
 
-<!-- KPI CARDS -->
-
-<div class="cards">
-
-    <div class="card blue">
-        <h3>Total Road Network</h3>
-        <h1>3.8 km</h1>
-    </div>
-
-    <div class="card green">
-        <h3>Daily Bus Users</h3>
-        <h1>50,000+</h1>
-    </div>
-
-    <div class="card orange">
-        <h3>Parking Capacity</h3>
-        <h1>420</h1>
-    </div>
-
-    <div class="card pink">
-        <h3>Flood Hotspots</h3>
-        <h1>07</h1>
-    </div>
-
-</div>
-
-<!-- THEMATIC TABLE -->
-
-<div class="theme-table">
-
-    <div class="theme-header">
-        INFRASTRUCTURE THEMATIC INDICATORS
-    </div>
-
-    <table>
-
-        <tr>
-            <th class="t1">M1</th>
-            <th class="t2">M2</th>
-            <th class="t3">M3</th>
-            <th class="t4">M4</th>
-            <th class="t5">M5</th>
-            <th class="t6">M6</th>
-            <th class="t7">M7</th>
-            <th class="t8">M8</th>
-            <th class="t9">M9</th>
-        </tr>
-
-        <tr>
-            <td>Mobility</td>
-            <td>Pedestrian</td>
-            <td>Water</td>
-            <td>Drainage</td>
-            <td>Waste</td>
-            <td>Public Amenities</td>
-            <td>Green Infra</td>
-            <td>Safety</td>
-            <td>Governance</td>
-        </tr>
-
-        <tr>
-            <td>15</td>
-            <td>12</td>
-            <td>8</td>
-            <td>10</td>
-            <td>6</td>
-            <td>14</td>
-            <td>9</td>
-            <td>11</td>
-            <td>13</td>
-        </tr>
-
-    </table>
-
-</div>
-
-<!-- MAP SECTION -->
-
-<div class="map-section">
-
-    <div class="map-box">
-        <h2>GIS Infrastructure Map</h2>
-        <div class="placeholder">
-            PLACE YOUR ARCGIS MAP HERE
-        </div>
-    </div>
-
-    <div class="chart-box">
-        <h2>Infrastructure Status</h2>
-
-        <p style="margin-top:25px;font-weight:bold;color:#005b96;">Mobility</p>
-        <progress value="82" max="100" style="width:100%"></progress>
-
-        <p style="margin-top:18px;font-weight:bold;color:#009688;">Utilities</p>
-        <progress value="74" max="100" style="width:100%"></progress>
-
-        <p style="margin-top:18px;font-weight:bold;color:#ef6c00;">Public Realm</p>
-        <progress value="65" max="100" style="width:100%"></progress>
-
-        <p style="margin-top:18px;font-weight:bold;color:#c2185b;">Environment</p>
-        <progress value="71" max="100" style="width:100%"></progress>
-
-    </div>
-
-</div>
+</section>
 
 <footer>
-
-    Thiagarajar School of Environmental Design and Architecture (TSEDA) • M.Plan Infrastructure Planning Studio • 2026
-
+Thiagarajar School of Environmental Design and Architecture • M.Plan Infrastructure Planning Studio • 2026
 </footer>
 
 </body>
